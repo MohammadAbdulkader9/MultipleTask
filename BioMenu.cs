@@ -10,17 +10,20 @@ namespace MultipleTask
     {
         public static void ShowBioMenu()
         {
-            bool programStatus = true;
-            int visitorChoice;
-
             Console.WriteLine(
                 "The Bio Menu\n" +
                 "------------\n");
+            Console.WriteLine(
+                "This program helps you to buy Bio tickets\n"+
+                "-----------------------------------------");
 
             Console.WriteLine(
                     "* Teenager price: 80 Kr\n" +
                     "* Pensions price: 90 Kr\n" +
                     "* Standard price: 120 Kr\n");
+
+            bool programStatus = true;
+            int visitorChoice;
 
             do
             {

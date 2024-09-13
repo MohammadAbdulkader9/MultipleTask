@@ -13,6 +13,9 @@ namespace MultipleTask
             Console.WriteLine(
                 "The Third Word Menu\n" +
                 "-------------------");
+            Console.WriteLine(
+                "This program collect and display the third word in the text\n"+
+                "-----------------------------------------------------------");
             Console.WriteLine("Write a text that contains at least 3 words: ");          
 
             bool programStatus = true;

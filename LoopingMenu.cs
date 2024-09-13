@@ -12,7 +12,10 @@ namespace MultipleTask
         {
             Console.WriteLine(
                 "The Looping Menu\n" +
-                "----------------\n");
+                "----------------");
+            Console.WriteLine(
+                "This program repeat your word 10 times in a single line\n" +
+                "-------------------------------------------------------");
 
             Console.WriteLine("Enter a text: ");
             string text = Console.ReadLine();
