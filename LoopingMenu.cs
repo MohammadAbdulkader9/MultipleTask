@@ -10,8 +10,18 @@ namespace MultipleTask
     {
         public static void ShowLoopingMenu()
         {
-            Console.WriteLine("Repeat Menu");
-            Console.WriteLine("-----------");
+            Console.WriteLine("Looping Menu");
+            Console.WriteLine("------------");
+
+            Console.WriteLine("Enter a text");
+            string text = Console.ReadLine();
+
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.Write($"{i}.{text}, ");
+            }
+            Console.WriteLine();
+
         }
     }
 }

@@ -24,7 +24,6 @@ namespace MultipleTask
 
             do
             {
-                //programStatus = true;
                 int.TryParse(Console.ReadLine(), out visitorChoice);
 
                 switch (visitorChoice)
@@ -42,7 +41,7 @@ namespace MultipleTask
                         break;
 
                 }
-                programStatus = false;
+                programStatus = false; // to go back to main menu
             }
             while (programStatus != false);
 
@@ -56,6 +55,7 @@ namespace MultipleTask
                 int age;
                 Console.Write("Enter Age: ");
                 age = int.Parse(Console.ReadLine());
+
                 if (age > 5 && age < 20)
                     Console.WriteLine($"Price is {teenageerPrice} kr");
                 else if (age > 64 && age < 100)
@@ -82,9 +82,9 @@ namespace MultipleTask
                 Console.Write("Enter visitors amount: ");
                 visitors = int.Parse(Console.ReadLine());
 
-                for (int i = 0; i < visitors; i++)
+                for (int i = 1; i <= visitors; i++)
                 {
-                    Console.Write($"Enter age for person {i + 1}: ");
+                    Console.Write($"Enter age for person {i}: ");
                     age = int.Parse(Console.ReadLine());
 
                     if (age > 5 && age < 20)
@@ -96,9 +96,8 @@ namespace MultipleTask
                     else if (age <= 5 || age >= 100)
                         total += 0;
                 }
-                Console.WriteLine("Total to pay:" + total);
+                Console.WriteLine($"* Total to pay {total} for {visitors} visitors");
             }
         }
-
     }
 }
