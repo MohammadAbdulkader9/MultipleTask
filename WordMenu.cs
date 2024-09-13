@@ -34,9 +34,9 @@ namespace MultipleTask
                         if (i == 2)
                             Console.WriteLine($"The third word is: {words[i]}");
                     }
-                    programStatus = false; // back to main menu when done
+                    programStatus = false;
                 }
-            } while (programStatus != false);
+            } while (programStatus);
 
             
             

@@ -18,34 +18,44 @@ namespace MultipleTask
                 "------------\n");
 
             Console.WriteLine(
-                "* Teenager price: 80 Kr\n" +
-                "* Pensions price: 90 Kr\n" +
-                "* Standard price: 120 Kr\n" +
-                "-For single visit enter 1\n" +
-                "-For multiple visitor enter 2");
+                    "* Teenager price: 80 Kr\n" +
+                    "* Pensions price: 90 Kr\n" +
+                    "* Standard price: 120 Kr\n");
 
             do
             {
-                int.TryParse(Console.ReadLine(), out visitorChoice);
+                Console.WriteLine(
+                    "- For single visit enter 1\n" +
+                    "- For multiple visitor enter 2\n" +
+                    "- 0. Exit the Bio Menu");
 
-                switch (visitorChoice)
+                if (int.TryParse(Console.ReadLine(), out visitorChoice))
                 {
-                    case 1:
-                        SingleVisitor();
-                        break;
+                    switch (visitorChoice)
+                    {
+                        case 1:
+                            SingleVisitor();
+                            break;
 
-                    case 2:
-                        MultipleVisitor();
-                        break;
+                        case 2:
+                            MultipleVisitor();
+                            break;
 
-                    default:
-                        Console.WriteLine("Wrong input!");
-                        break;
+                        case 0:
+                            programStatus = false;
+                            break;
 
+                        default:
+                            Console.WriteLine("Wrong input!");
+                            break;
+                    }
                 }
-                programStatus = false; // to go back to main menu
+                else
+                {
+                    Console.WriteLine("Wrong input!");
+                }
             }
-            while (programStatus != false);
+            while (programStatus);
 
             //Single visitor controll
             static void SingleVisitor()
@@ -54,20 +64,35 @@ namespace MultipleTask
                 int pensionPrice = 90;
                 int standardPrice = 120;
 
-                int age;
-                Console.Write("Enter Age: ");
-                age = int.Parse(Console.ReadLine());
+                bool programStatus = true;
 
-                if (age > 5 && age < 20)
-                    Console.WriteLine($"Price is {teenageerPrice} kr");
-                else if (age > 64 && age < 100)
-                    Console.WriteLine($"Price is {pensionPrice} kr");
-                else if (age >= 100)
-                    Console.WriteLine("Congrats free entry for you");
-                else if (age <= 5)
-                    Console.WriteLine("Too young to enter alone!");
-                else
-                    Console.WriteLine($"Price is {standardPrice} kr");
+                int age;
+
+                do
+                {
+                    Console.Write("Enter Age: ");
+
+                    if (int.TryParse(Console.ReadLine(), out age))
+                    {
+                        if (age > 5 && age < 20)
+                            Console.WriteLine($"Price is {teenageerPrice} kr");
+                        else if (age > 64 && age < 100)
+                            Console.WriteLine($"Price is {pensionPrice} kr");
+                        else if (age >= 100)
+                            Console.WriteLine("Congrats free entry for you");
+                        else if (age <= 5)
+                            Console.WriteLine("Too young to enter alone!");
+                        else
+                            Console.WriteLine($"Price is {standardPrice} kr");
+                        programStatus = false;
+                        Console.WriteLine("--------");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Wrong input!");
+                    }
+                }
+                while (programStatus);
             }
 
             //multiple visitors controll
@@ -81,24 +106,53 @@ namespace MultipleTask
                 int pensionPrice = 90;
                 int standardPrice = 120;
 
-                Console.Write("Enter visitors amount: ");
-                visitors = int.Parse(Console.ReadLine());
+                bool programStatus = true;
 
-                for (int i = 1; i <= visitors; i++)
+                do
                 {
-                    Console.Write($"Enter age for person {i}: ");
-                    age = int.Parse(Console.ReadLine());
+                    Console.Write("Enter visitors amount: ");
 
-                    if (age > 5 && age < 20)
-                        total += teenageerPrice;
-                    else if (age > 64 && age < 100)
-                        total += pensionPrice;
-                    else if (age >= 20 && age <= 64)
-                        total += standardPrice;
-                    else if (age <= 5 || age >= 100)
-                        total += 0;
+                    // checking non-numeric input for visitors amount
+                    if (int.TryParse(Console.ReadLine(), out visitors)) 
+                    {
+                        for (int i = 1; i <= visitors; i++)
+                        {                                  
+                            bool ageCheck = false;
+
+                            while (!ageCheck)
+                            {
+                                Console.Write($"Enter age for person {i}: ");
+
+                                // checking non-numeric input for visitors age
+                                if (int.TryParse(Console.ReadLine(), out age))
+                                {
+
+                                    if (age > 5 && age < 20)
+                                        total += teenageerPrice;
+                                    else if (age > 64 && age < 100)
+                                        total += pensionPrice;
+                                    else if (age >= 20 && age <= 64)
+                                        total += standardPrice;
+                                    else if (age <= 5 || age >= 100)
+                                        total += 0;
+                                    ageCheck = true;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Wrong input!");
+                                }
+                            }                            
+                        }
+                        Console.WriteLine($"* Total to pay {total} for {visitors} visitors");
+                        Console.WriteLine("--------");
+                        programStatus = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Wrong input!");
+                    }
                 }
-                Console.WriteLine($"* Total to pay {total} for {visitors} visitors");
+                while (programStatus);
             }
         }
     }

@@ -24,7 +24,7 @@ namespace MultipleTask
 
                 int choice;
                                
-                if (int.TryParse(Console.ReadLine(), out choice)) //check if the choice i correct
+                if (int.TryParse(Console.ReadLine(), out choice)) //check if the choice is correct
                 {
                     switch (choice)
                     {
@@ -55,7 +55,7 @@ namespace MultipleTask
                     Console.WriteLine("Wrong input!");
                 }                
             }
-            while (programStatus != false);          
+            while (programStatus);          
         }    
     }
 }
