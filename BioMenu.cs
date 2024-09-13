@@ -14,8 +14,10 @@ namespace MultipleTask
             int visitorChoice;
 
             Console.WriteLine(
-                "Bio Menu\n" +
-                "---------\n" +
+                "The Bio Menu\n" +
+                "------------\n");
+
+            Console.WriteLine(
                 "* Teenager price: 80 Kr\n" +
                 "* Pensions price: 90 Kr\n" +
                 "* Standard price: 120 Kr\n" +
